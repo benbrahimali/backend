@@ -19,7 +19,7 @@ import { Tokens } from './types';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
   @Public()
   @Post('signup')
@@ -64,12 +64,17 @@ export class AuthController {
     return { message: 'Logged out successfully' };
   }
 
+
+
+
+
   @Public()
   @UseGuards(RtGuard)
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
   async refresh(
     @GetCurrentUserId() userId: string,
+
     @GetCurrentUser('refreshToken') refreshToken: string,
   ): Promise<Tokens> {
     const tokens = await this.authService.refresh(userId, refreshToken);

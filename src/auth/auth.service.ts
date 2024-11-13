@@ -21,7 +21,7 @@ export class AuthService {
     @InjectModel(User.name) private userModel: Model<User>,
     private readonly mailerService: MailerService,
     private readonly tokenService: TokenService,
-  ) {}
+  ) { }
 
   async otpSend(data): Promise<boolean> {
     const user = await this.userModel.findOne({ email: data.email });
@@ -148,6 +148,7 @@ export class AuthService {
       user.email,
       user.role,
     );
+
     await this.tokenService.updateRtHash(
       user._id.toString(),
       tokens.refresh_token,
