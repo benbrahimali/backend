@@ -94,8 +94,11 @@ export class AuthService {
     await this.tokenService.updateRtHash(
       userExist._id.toString(),
       tokens.refresh_token,
+      
     );
+    console.log("login avec succée")
     return tokens;
+   
   }
 
   async logout(userId: string) {
@@ -125,7 +128,7 @@ export class AuthService {
       savedUser._id.toString(),
       tokens.refresh_token,
     );
-
+  console.log("this function is invoked")
     await this.mailerService.sendMail({
       to: savedUser.email,
       subject: 'Account Created',

@@ -43,6 +43,16 @@ export class User {
   @ApiProperty()
   @Prop()
   phone: string;
+  @Prop({ type: String, ref: 'Team' })
+  teamId: string;
+  @Prop({ default: 0 })
+  rating: number;
+
+  @Prop({ default: true })
+  availability: boolean;
+
+
+
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

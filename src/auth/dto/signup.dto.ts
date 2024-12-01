@@ -24,7 +24,7 @@ export class SignupDto {
   password: string;
 
   @ApiProperty()
-  @IsString()
+  @Optional()
   @IsEnum(Role)
   role: Role;
 
@@ -32,7 +32,7 @@ export class SignupDto {
   @ApiProperty()
   @Optional()
   @IsString()
-  name: string
+  username: string
 
   @ApiProperty()
   @Optional()
